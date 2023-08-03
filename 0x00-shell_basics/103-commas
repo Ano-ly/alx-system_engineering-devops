@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ampXv; echo -e "\n"
+echo -e "$(ls -ampXv)\n"
