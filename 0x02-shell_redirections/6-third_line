@@ -1,2 +1,2 @@
 #!/bin/bash
-cat -n ll | grep " *3"
+cat -n iacta | grep " *3"
