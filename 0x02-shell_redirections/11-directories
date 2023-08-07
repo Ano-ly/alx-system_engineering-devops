@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d | wc -l
+ls -lRaA | find -iname "^d*" | wc -l
