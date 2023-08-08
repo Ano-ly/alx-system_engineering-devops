@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d | grep -v '^\./\(\.\|\.\.\)/' | wc -l
+ls -AR | find . -type d -regex "\./+[a-zA-Z1-9/\.]+" | wc -l
