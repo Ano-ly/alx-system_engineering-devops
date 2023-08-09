@@ -1,2 +1,2 @@
 #!/bin/bash
-find -type f -printf "%f\n" | grep ".git" | sort -nf
+find -type f -regex ".git" -printf "%f\n" | sort -nf
