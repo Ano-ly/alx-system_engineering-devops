@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -o "^[[:alnum:]]" | tr -d "\n"
+printf "$(grep -o "^[[:alnum:]]" ll | tr -d "\n")\n"
