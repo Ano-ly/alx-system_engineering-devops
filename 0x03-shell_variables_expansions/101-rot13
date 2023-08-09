@@ -1,0 +1,2 @@
+#!bin/bash
+tr "A-Z" "NOPQRSTUVWXYZABCDEFGHIJKLM" | tr "a-z" "nopqrstuvwxyzabcdefghijklm"
