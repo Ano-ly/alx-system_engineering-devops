@@ -1,2 +1,2 @@
 #!/bin/bash
-find -type f -regex ".gif" -printf "%f\n" | sort -df
+find . -type f -regex "a*" -printf "%f\n"
