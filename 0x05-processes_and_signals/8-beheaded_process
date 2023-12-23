@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#This script kills a stubborn process
+pkill -SIGKILL bash
