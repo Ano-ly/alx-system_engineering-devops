@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This script prints lines that contain the word 'bas'
+# shellcheck disable=SC2009
+ps ux -H | grep "bash"
