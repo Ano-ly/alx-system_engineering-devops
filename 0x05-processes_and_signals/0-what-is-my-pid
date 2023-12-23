@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#This script prints the process ID of this executable file
+echo $$
