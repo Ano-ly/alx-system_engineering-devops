@@ -2,7 +2,17 @@
 #This script does a lot of really funny things
 my_pid=$$
 echo "$my_pid" >>/var/run/myscript.pid
-trap 'echo "I hate the kill command"' SIGTERM
+killmyself()
+{
+	echo "I hate the kill command"
+	rm /var/run/myscript.pid
+}
+killmy()
+{
+	rm /var/run/myscript.pid
+}
+trap killmyself SIGTERM
+trap killmyself SIGQUIT
 trap 'echo "Y U no love me?!"' SIGINT
 while true; do
 	echo "To infinity and beyond"
