@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script prints currently running processes in user-oriented format
+#with process hierarchy and without consideration of whether or not
+#any process has a TTY
+ps uHx
