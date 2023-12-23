@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#This script displays a message, and makes a sigterm signa bounce off.
+trap 'echo "I am invincible!!!"' SIGTERM
+while true; do
+	echo "To infinity and beyond"
+	sleep 2;
+done
