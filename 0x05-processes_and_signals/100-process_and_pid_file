@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This script does a lot of really funny things
+my_pid=$$
+echo "$my_pid" >>/var/run/myscript.pid
