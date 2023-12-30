@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#prints "Best School" to stdout 10 times using until
+x=0
+until (( x == 10 ));
+do
+	(( x++ ))
+	echo "Best School"
+done
