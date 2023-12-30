@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#prints to stdout "Best School" a number of times
+i=10
+j=0
+while (( j < i ));
+do
+	echo "Best School"
+	(( j++ ))
+done
