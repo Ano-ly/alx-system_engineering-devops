@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 #prints the list of files in the current directory
-find .| cut -d "-" -f 2
+
+for i in $(find .| cut -d "-" -f 2);
+do
+	echo "$i"
+done
