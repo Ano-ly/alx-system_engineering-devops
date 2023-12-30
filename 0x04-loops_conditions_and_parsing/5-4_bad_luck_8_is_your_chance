@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#prints "Best School" to stdout under certain conditions
+x=0
+while [ $x -lt 10 ];
+do
+	if (( x == 7 )); then
+		echo "good luck"
+	elif (( x == 3 )); then
+		echo "bad luck"
+	else
+		echo "Best School"
+	fi
+
+	(( x++ ))
+done
