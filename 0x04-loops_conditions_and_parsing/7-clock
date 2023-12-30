@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#prints hours from 0 to 12, and munites from 1 to 59
+hour=0
+while [ $hour -lt 13 ];
+do
+	minute=1
+	echo "Hour: $hour"
+	while [ $minute -lt 60 ];
+	do
+		echo "$minute"
+		(( minute++ ))
+	done
+	(( hour++ ))
+done
