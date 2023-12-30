@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #prints the list of files in the current directory
 
-for i in $(find .| cut -d "-" -f 2);
+for i in $(find . -not -name ".*"| cut -d "-" -f 2 | cut -d "/" -f 2 );
 do
 	echo "$i"
 done
