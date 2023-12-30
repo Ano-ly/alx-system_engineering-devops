@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#prints numbers 1-20 and some messages
+x=1
+while [ $x -lt 21 ];
+do
+	echo $x
+	case $x in
+		4) echo "bad luck from China";;
+		9) echo "bad luck from Japan";;
+		17) echo "bad luck from Italy";;
+	esac
+	x=$(( x + 1 ))
+done
+
