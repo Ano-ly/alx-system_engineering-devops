@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#This prints a list of all active IPv4s on a machine
+ifconfig -a | grep -E -o "inet \b[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\b" | grep -E -o "\b[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\b"
