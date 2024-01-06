@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#This script changes the loopback address of an Ubuntu server
+ifconfig lo 127.0.0.2
+ifconfig facebook.com 8.8.8.8
