@@ -32,7 +32,6 @@ Host *
 #   AddressFamily any
 #   ConnectTimeout 0
 #   StrictHostKeyChecking ask
-    IdentityFile ~/.ssh/school
 #   IdentityFile ~/.ssh/id_dsa
 #   IdentityFile ~/.ssh/id_ecdsa
 #   IdentityFile ~/.ssh/id_ed25519
@@ -47,3 +46,8 @@ Host *
 #   ProxyCommand ssh -q -W %h:%p gateway.example.com
 #   RekeyLimit 1G 1h
 #   UserKnownHostsFile ~/.ssh/known_hosts.d/%k
+    IdentityFile ~/.ssh/school
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    BatchMode yes
