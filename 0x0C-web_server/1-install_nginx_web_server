@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Configures nginx on an Ubuntu server
 sudo apt-get update
-sudo apt-get -y nginx
+sudo apt-get -y install nginx
 sudo sh -c 'echo "<html><body>Hello World!</body></html>" > /var/www/html/index.html'
 sudo service nginx restart
