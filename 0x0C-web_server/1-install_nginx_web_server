@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Configures nginx on an Ubuntu server
+sudo apt-get update
+sudo apt-get -y nginx
+echo "Hello World!" > index.html
