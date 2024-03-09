@@ -2,5 +2,6 @@
 # Configures nginx on an Ubuntu server
 sudo apt-get update
 sudo apt-get -y nginx
-echo "<html><body>Hello World!</body></html>" > index.html
+sudo echo "<html><body>Hello World!</body></html>" > /var/www/html/index.html
+/var/www/html/index.nginx-debian.html
 sudo service nginx restart
