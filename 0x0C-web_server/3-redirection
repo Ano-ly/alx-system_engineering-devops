@@ -1,3 +1,2 @@
-pattern="\s*location \/ \{\s*# First attempt to serve request as file, then\s*# as directory, then fall back to displaying a 404\.\s*try_files \$uri \$uri\/ =404;\s*\}"
-
-sed -i ":a;N;$!ba;s|$pattern|replacementtext|g" $1
+#!/usr/bin/env bash
+# Configures an Nginx web server to redirect permanently
