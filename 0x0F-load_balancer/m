@@ -1,0 +1,39 @@
+frontend my_front
+	mode tcp
+	bind :80
+	default_backend
+web_0s
+backend first_backend
+	mode tcp
+	balance roundrobin
+	server
+494239-web-01 54.158.176.152:80 check
+	server 494239-web-02 54.174.67.165:80
+check
+frontend my_front
+	mode tcp
+	bind :80
+	default_backend web_0s
+backend first_backend
+	mode tcp
+	balance roundrobin
+	server 494239-web-01 54.158.176.152:80 check
+	server 494239-web-02 54.174.67.165:80 check
+frontend my_front
+	mode tcp
+	bind :80
+	default_backend web_0s
+backend first_backend
+	mode tcp
+	balance roundrobin
+	server 494239-web-01 54.158.176.152:80 check
+	server 494239-web-02 54.174.67.165:80 check
+frontend my_front
+	mode tcp
+	bind :80
+	default_backend web_0s
+backend web_0s
+	mode tcp
+	balance roundrobin
+	server 494239-web-01 54.158.176.152:80 check
+	server 494239-web-02 54.174.67.165:80 check
