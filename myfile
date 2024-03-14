@@ -1,0 +1,23 @@
+tihiwefnalne
+ewfn
+frontend my_front\n\tmode tcp\n\tbind :80\n\tdefault_backend web_0s
+backend first_backend\n\tmode tcp\n\tbalance roundrobin
+\tserver 494239-web-01 54.158.176.152 check
+\tserver 494239-web-02 54.174.67.165 check
+frontend my_front\n\tmode tcp\n\tbind :80\n\tdefault_backend web_0s
+backend first_backend\n\tmode tcp\n\tbalance roundrobin
+\tserver 494239-web-01 54.158.176.152 check
+\tserver 494239-web-02 54.174.67.165 check
+frontend my_front\n\tmode tcp\n\tbind :80\n\tdefault_backend web_0s
+backend first_backend\n\tmode tcp\n\tbalance roundrobin
+\tserver 494239-web-01 54.158.176.152 check
+\tserver 494239-web-02 54.174.67.165 check
+frontend my_front
+	mode tcp
+	bind :80
+	default_backend web_0s
+backend first_backend
+	mode tcp
+	balance roundrobin
+	server 494239-web-01 54.158.176.152 check
+	server 494239-web-02 54.174.67.165 check
