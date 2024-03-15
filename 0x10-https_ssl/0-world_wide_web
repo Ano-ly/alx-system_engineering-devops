@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#Prints details of the type of record and pointing IP address of domain
+
+domain=$1
+subdomain=""
+record=""
+echo "$#"
+
+if [ "$#" -eq 2 ]; then
+	subdomain=$2
+	record=$(dig "${subdomain}.${domain}" | awk -v RS=";;" 'NR==7 {print $6}')
+	ip=$(dig "${subdomain}.${domain}" | awk -v RS=";;" 'NR==7 {print $7}')
+	echo "The subdomain ${subdomain} is a ${record} record and points to ${ip}"
+else
+	record=$(dig "www.${domain}" | awk -v RS=";;" 'NR==7 {print $6}')
+	ip=$(dig "www.${domain}" | awk -v RS=";;" 'NR==7 {print $7}')
+	echo "The subdomain www is a ${record} record and points to ${ip}"
+	record=$(dig "lb-01.${domain}" | awk -v RS=";;" 'NR==7 {print $6}')
+	ip=$(dig "lb-01.${domain}" | awk -v RS=";;" 'NR==7 {print $7}')
+	echo "The subdomain lb-01 is a ${record} record and points to ${ip}"
+	record=$(dig "web-01.${domain}" | awk -v RS=";;" 'NR==7 {print $6}')
+	ip=$(dig "web-01.${domain}" | awk -v RS=";;" 'NR==7 {print $7}')
+	echo "The subdomain web-01 is a ${record} record and points to ${ip}"
+	record=$(dig "web-02.${domain}" | awk -v RS=";;" 'NR==7 {print $6}')
+	ip=$(dig "web-02.${domain}" | awk -v RS=";;" 'NR==7 {print $7}')
+	echo "The subdomain web-02 is a ${record} record and points to ${ip}"
+fi
+
