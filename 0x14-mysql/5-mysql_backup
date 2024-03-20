@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Backs up all databases an compresses into a tar.gz archive
+sudo mysqldump -p"$1" --all-databases > backup.sql
+date=$(ls -l --full-time backup.sql | cut -d " " -f 6 | awk -v FS="-" -v OFS="-" '{print $3,$2,$1}')
+tar -czf "${date}.tar.gz" backup.sql
