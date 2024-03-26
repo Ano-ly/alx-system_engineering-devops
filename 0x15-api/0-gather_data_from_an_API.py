@@ -23,7 +23,7 @@ for task in tasks:
     if task.get("completed"):
         done_titles.append(task.get("title"))
 
-top_str = "Employee {} is done with tasks ({}/{}):"\
+top_str = "Employee {} is done with tasks({}/{}):"\
           .format(name, len(done_titles), len(tasks))
 content = "\n\t ".join(done_titles)
 
