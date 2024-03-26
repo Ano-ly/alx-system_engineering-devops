@@ -27,7 +27,7 @@ if __name__ == "__main__":
         if str(dic.get("userId")) == sys.argv[1]:
             tasks.append(dic)
     str_lists = []
-    with open ("USER_ID.csv", "w") as csvfile:
+    with open("{}.csv".format(sys.argv[1]), "w") as csvfile:
         csv_obj = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in tasks:
             if task.get("completed"):
