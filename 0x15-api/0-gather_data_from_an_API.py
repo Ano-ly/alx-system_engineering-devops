@@ -17,7 +17,7 @@ for dic in user_data:
     if str(dic.get("id")) == sys.argv[1]:
         name = dic.get("name")
 for dic in todo_data:
-    if str(dic.get("user.Id")) == sys.argv[1]:
+    if str(dic.get("userId")) == sys.argv[1]:
         tasks.append(dic)
 for task in tasks:
     if task.get("completed"):
