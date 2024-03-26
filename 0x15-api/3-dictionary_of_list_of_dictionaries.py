@@ -1,33 +1,41 @@
 #!/usr/bin/python3
-"""Fetch data via a RestAPI"""
-import requests
-import sys
+"""
+Fetch data via a RestAPI, jsonplaceholder and write
+to json file all employees data
+"""
+import json
 
-my_url_todo = 'https://jsonplaceholder.typicode.com/todos'
-my_url_user = 'https://jsonplaceholder.typicode.com/users'
+if __name__ == "__main__":
+    """Don't run script if imported"""
+    import requests
+    import sys
+    import csv
 
-todo_data = requests.get(my_url_todo).json()
-user_data = requests.get(my_url_user).json()
+    my_url_todo = 'https://jsonplaceholder.typicode.com/todos'
+    my_url_user = 'https://jsonplaceholder.typicode.com/users'
 
-done_titles = []
-tasks = []
-name = ""
+    todo_data = requests.get(my_url_todo).json()
+    user_data = requests.get(my_url_user).json()
 
-for dic in user_data:
-    if str(dic.get("id")) == sys.argv[1]:
-        name = dic.get("name")
-for dic in todo_data:
-    if str(dic.get("user.Id")) == sys.argv[1]:
-        tasks.append(dic)
-for task in tasks:
-    if task.get("completed"):
-        done_titles.append(task.get("title"))
+    super_dict = {}
+    for dict in user_data:
+        tasks = []
+        name = ""
+        user_id = dict.get("id")
+        name = dict.get("name")
+        username = dict.get("username")
+        for dict in todo_data:
+            if dict.get("userId") == user_id:
+                tasks.append(dict)
 
-top_str = "Employee {} is done with tasks ({}/{}):"\
-          .format(name, len(done_titles), len(tasks))
-content = "\n\t ".join(done_titles)
-
-print(top_str)
-print("\t ", end="")
-
-print(content)
+        inner_list = []
+        for task in tasks:
+            inner_dict = {}
+            inner_dict["task"] = task.get("title")
+            inner_dict["completed"] = task.get("completed")
+            inner_dict["username"] = username
+            inner_list.append(inner_dict)
+        outer_dict = {user_id: inner_list}
+        super_dict.update(outer_dict)
+    with open("todo_all_employees.json", "w") as jfile:
+        json.dump(super_dict, jfile)
