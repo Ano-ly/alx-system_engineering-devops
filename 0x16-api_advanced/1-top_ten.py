@@ -24,7 +24,8 @@ def top_ten(subreddit):
     the_resp = requests.get('https://oauth.reddit.com/r/{}/hot.json'
                             .format(subreddit),
                             headers=header_list, params={'limit': 10})
-    if the_resp.status_code != 200:
+    if the_resp.status_code != 200 or\
+       the_resp.json().get('data').get('children') == []:
         print('None')
     else:
         for i in the_resp.json()['data']['children']:
