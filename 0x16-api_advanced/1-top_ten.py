@@ -23,7 +23,7 @@ def top_ten(subreddit):
                             .format(subreddit),
                             headers=header_list, params={'limit': 10})
     if the_resp.status_code != 200:
-        print('oops')
+        print('None')
     else:
         for i in the_resp.json()['data']['children']:
             print(i['data']['title'])
