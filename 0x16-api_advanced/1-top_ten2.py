@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""print number of subscribers of a subreddit"""
+"""Print top ten subreddit posts"""
 
 
-def number_of_subscribers(subreddit):
-    """Get number of subscribers for subreddit"""
+def top_ten(subreddit):
+    """Get top ten posts in subreddit"""
 
-    import json
     import requests
     SECRET_KEY = 'faESoE9-rCRtzLnGeQALlTEz4kpUdA'
     CLIENT_ID = 'hh1yZIcidmIZtJEuP5O8dA'
@@ -22,12 +21,13 @@ def number_of_subscribers(subreddit):
     new_headers = {**header_list,
                    **{'Authorization': 'bearer {}'.format(MY_TOKEN)}}
 
-    the_resp = requests.get('https://oauth.reddit.com/r/{}/about.json'
-                            .format(subreddit), headers=header_list,
+    the_resp = requests.get('https://oauth.reddit.com/r/{}/hot.json'
+                            .format(subreddit),
+                            headers=header_list,
+                            params={'limit': 10},
                             allow_redirects=False)
-    if the_resp.status_code != 200 or\
-       the_resp.json().get('data').get('children') == []:
-        return (0)
+    if the_resp.status_code != 200:
+        print('None')
     else:
-        subs = the_resp.json()['data']['subscribers']
-        return (subs)
+        for i in the_resp.json()['data']['children']:
+            print(i['data']['title'])

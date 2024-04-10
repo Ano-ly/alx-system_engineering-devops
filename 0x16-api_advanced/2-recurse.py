@@ -2,7 +2,7 @@
 """Print top ten subreddit posts"""
 
 
-def my_recursive(subreddit, count, hot_list=[]):
+def my_recursive(subreddit, after_, hot_list=[]):
     """Recursive function"""
 
     import requests
@@ -23,20 +23,26 @@ def my_recursive(subreddit, count, hot_list=[]):
 
     the_resp = requests.get('https://oauth.reddit.com/r/{}/hot.json'
                             .format(subreddit),
-                            headers=header_list, params={'count': count})
-    if the_resp.status_code != 200:
-        return (hot_list)
+                            headers=header_list, params={'after': after_},
+                            allow_redirects=False)
+    is_resp = requests.get('https://oauth.reddit.com/r/{}/search.json'
+                           .format(subreddit),
+                           headers=header_list)
+    if the_resp.status_code != 200 or is_resp.status_code != 200:
+        return (None)
     else:
-        count = len(the_resp.json()['data']['children'])
+        after_ = the_resp.json()['data']['after']
         for i in the_resp.json()['data']['children']:
-            if i['data']['title'] in hot_list:
-                return (hot_list)
             hot_list.append((i['data']['title']))
-        return (my_recursive(subreddit, count, hot_list))
+        print(hot_list)
+        print()
+        print(len(hot_list))
+        if not after_:
+            return (hot_list)
+        return (my_recursive(subreddit, after_, hot_list))
 
 
 def recurse(subreddit):
     """Actual task recursive function"""
 
-    count = 0
-    return (my_recursive(subreddit, count, []))
+    return (my_recursive(subreddit, None, []))
