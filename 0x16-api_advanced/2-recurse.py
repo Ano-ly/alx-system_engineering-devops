@@ -25,19 +25,18 @@ def my_recursive(subreddit, count, hot_list=[]):
                             .format(subreddit),
                             headers=header_list, params={'count': count})
     if the_resp.status_code != 200:
-        print('None')
         return (hot_list)
     else:
-        count += len(the_resp.json()['data']['children'])
-        print(count)
+        count = len(the_resp.json()['data']['children'])
         for i in the_resp.json()['data']['children']:
+            if i['data']['title'] in hot_list:
+                return (hot_list)
             hot_list.append((i['data']['title']))
-            print(hot_list)
-        my_recursive(subreddit, count, hot_list)
+        return (my_recursive(subreddit, count, hot_list))
 
 
 def recurse(subreddit):
     """Actual task recursive function"""
 
     count = 0
-    my_recursive(subreddit, count, [])
+    return (my_recursive(subreddit, count, []))
