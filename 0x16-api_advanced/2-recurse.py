@@ -3,8 +3,6 @@
 
 
 def top_ten(subreddit):
-    """Get top ten posts in subreddit"""
-
     import requests
     SECRET_KEY = 'faESoE9-rCRtzLnGeQALlTEz4kpUdA'
     CLIENT_ID = 'hh1yZIcidmIZtJEuP5O8dA'

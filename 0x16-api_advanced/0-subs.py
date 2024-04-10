@@ -3,6 +3,8 @@
 
 
 def number_of_subscribers(subreddit):
+    """Get number of subscribers for subreddit"""
+
     import json
     import requests
     SECRET_KEY = 'faESoE9-rCRtzLnGeQALlTEz4kpUdA'
