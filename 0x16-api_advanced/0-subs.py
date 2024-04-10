@@ -24,7 +24,8 @@ def number_of_subscribers(subreddit):
 
     the_resp = requests.get('https://oauth.reddit.com/r/{}/about.json'
                             .format(subreddit), headers=header_list)
-    if the_resp.status_code != 200:
+    if the_resp.status_code != 200 or\
+       the_resp.json().get('data').get('children') == []:
         return (0)
     else:
         subs = the_resp.json()['data']['subscribers']
