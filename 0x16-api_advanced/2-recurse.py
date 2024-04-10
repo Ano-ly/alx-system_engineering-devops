@@ -2,7 +2,9 @@
 """Print top ten subreddit posts"""
 
 
-def top_ten(subreddit):
+def my_recursive(subreddit, count, hot_list=[]):
+    """Recursive function"""
+
     import requests
     SECRET_KEY = 'faESoE9-rCRtzLnGeQALlTEz4kpUdA'
     CLIENT_ID = 'hh1yZIcidmIZtJEuP5O8dA'
@@ -21,9 +23,21 @@ def top_ten(subreddit):
 
     the_resp = requests.get('https://oauth.reddit.com/r/{}/hot.json'
                             .format(subreddit),
-                            headers=header_list, params={'limit': 10})
+                            headers=header_list, params={'count': count})
     if the_resp.status_code != 200:
         print('None')
+        return (hot_list)
     else:
+        count += len(the_resp.json()['data']['children'])
+        print(count)
         for i in the_resp.json()['data']['children']:
-            print(i['data']['title'])
+            hot_list.append((i['data']['title']))
+            print(hot_list)
+        my_recursive(subreddit, count, hot_list)
+
+
+def recurse(subreddit):
+    """Actual task recursive function"""
+
+    count = 0
+    my_recursive(subreddit, count, [])

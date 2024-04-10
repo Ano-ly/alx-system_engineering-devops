@@ -2,7 +2,9 @@
 """Print top ten subreddit posts"""
 
 
-def top_ten(subreddit):
+def count_words(subreddit, word_list):
+    """Count words in post"""
+
     import requests
     SECRET_KEY = 'faESoE9-rCRtzLnGeQALlTEz4kpUdA'
     CLIENT_ID = 'hh1yZIcidmIZtJEuP5O8dA'
