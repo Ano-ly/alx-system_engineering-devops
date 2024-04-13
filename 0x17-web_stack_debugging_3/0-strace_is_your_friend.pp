@@ -1,26 +1,5 @@
 # Fix Apache on an Ubuntu Machine
-file { '/var/www/html/index.html':
-  ensure  => file,
-  content => '<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Holberton &#8211; Just another WordPress site</title>
-    <link rel="alternate" type="application/rss+xml" title="Holberton &raquo; Feed" href="http://127.0.0.1/?feed=rss2" />
-    <link rel="alternate" type="application/rss+xml" title="Holberton &raquo; Comments Feed" href="http://127.0.0.1/?feed=comments-rss2" />
-    <link rel="stylesheet" href="http://127.0.0.1/wp-content/themes/twentyseventeen/assets/images/header.jpg" />
-</head>
-<body>
-    <div id="wp-custom-header" class="wp-custom-header">
-        <img src="http://127.0.0.1/wp-content/themes/twentyseventeen/assets/images/header.jpg" width="2000" height="1200" alt="Holberton" />
-    </div>
-    <div class="site-title">
-        <h1><a href="http://127.0.0.1/" rel="home">Holberton</a></h1>
-    </div>
-    <p>Yet another bug by a Holberton student</p>
-</body>
-</html>',
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+exec { 'Fix_the_php':
+  command  => "sed -i 's/class-wp-locale.phpp/class-wp-locale.php/' /var/www/html/wp-settings.php",
+  provider => shell,
 }
