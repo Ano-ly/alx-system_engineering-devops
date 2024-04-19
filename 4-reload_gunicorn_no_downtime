@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Kill a cat with infinite lives
+pid=$(pgrep gunicorn | head -1)
+kill -HUP "$pid"
